@@ -20,17 +20,23 @@ elements.destroyEl.addEventListener("click", () => {
 });
 
 function createBoxes(amount) {
+  const boxArr = [];
+
   for (let i = 0; i < amount; i++) {
     let divEl = document.createElement("div");
     divEl.style.width = `${nextDivWidth}px`;
     divEl.style.height = `${nextDivWidth}px`;
+    divEl.style.border = "1px solid black";
 
-    divEl.style.backgroundColor =
-      "#" + Math.floor(Math.random() * 8 ** 8).toString(16);
-    elements.boxesEl.appendChild(divEl);
+    divEl.style.backgroundColor = `#${Math.floor(
+      Math.random() * 8 ** 8
+    ).toString(16)}`;
+
+    boxArr.push(divEl);
 
     nextDivWidth += 10;
   }
+  elements.boxesEl.append(...boxArr);
 }
 
 function destroyBoxes() {
